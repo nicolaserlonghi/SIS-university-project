@@ -1,0 +1,23 @@
+.model MUX_8_BIT
+.inputs a7 a6 a5 a4 a3 a2 a1 a0 b7 b6 b5 b4 b3 b2 b1 b0 s
+.outputs o7 o6 o5 o4 o3 o2 o1 o0 
+
+.subckt MUX_1_BIT a=a7 b=b7 s=s o=o7
+.subckt MUX_1_BIT a=a6 b=b6 s=s o=o6
+.subckt MUX_1_BIT a=a5 b=b5 s=s o=o5
+.subckt MUX_1_BIT a=a4 b=b4 s=s o=o4
+.subckt MUX_1_BIT a=a3 b=b3 s=s o=o3
+.subckt MUX_1_BIT a=a2 b=b2 s=s o=o2
+.subckt MUX_1_BIT a=a1 b=b1 s=s o=o1
+.subckt MUX_1_BIT a=a0 b=b0 s=s o=o0
+
+.end
+
+.model MUX_1_BIT
+.inputs s a b
+.outputs o
+.names s a b o
+11- 1
+0-1 1
+.end
+

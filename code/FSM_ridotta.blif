@@ -1,0 +1,96 @@
+.model CONTROLLORE
+.inputs init reset to th1 th0
+.outputs start st1 st0 vlv1 vlv0
+.latch    st1 LatchOut_v5   0
+.latch    [1144] LatchOut_v6   0
+.start_kiss
+.i 5
+.o 5
+.p 19
+.s 4
+.r START
+0---- START START 10000
+11--- START START 10000
+10-01 START NEUTRO 11000
+10-00 START ACIDO 10100
+10-11 START BASICO 11100
+11--- NEUTRO START 10000
+10-11 NEUTRO BASICO 01100
+10-01 NEUTRO NEUTRO 01000
+10-00 NEUTRO ACIDO 10100
+11--- ACIDO START 10000
+10000 ACIDO ACIDO 00100
+10100 ACIDO ACIDO 00101
+10-01 ACIDO NEUTRO 11000
+10-11 ACIDO BASICO 11100
+11--- BASICO START 10000
+10011 BASICO BASICO 01100
+10111 BASICO BASICO 01110
+10-01 BASICO NEUTRO 11000
+10-00 BASICO ACIDO 10100
+.end_kiss
+.latch_order LatchOut_v5 LatchOut_v6
+.code START 00
+.code NEUTRO 11
+.code ACIDO 01
+.code BASICO 10
+.names th0 st1 st0 [1144]
+0-1 1
+-10 1
+.names reset th1 th0 LatchOut_v5 LatchOut_v6 [1157] start
+1----- 1
+--01-- 1
+-0--0- 1
+---0-1 1
+.names init reset th0 st1
+101 1
+.names init reset th1 th0 st0
+101- 1
+10-0 1
+.names reset to th1 LatchOut_v5 LatchOut_v6 vlv1
+01110 1
+.names reset to LatchOut_v5 [1157] vlv0
+0100 1
+.names th0 LatchOut_v6 [1157]
+1- 1
+-0 1
+.exdc 
+.inputs init reset to th1 th0 LatchOut_v5 LatchOut_v6
+.outputs [1144] start st1 st0 vlv1 vlv0
+.names init reset th1 th0 LatchOut_v5 LatchOut_v6 [1144]
+0---1- 1
+0----1 1
+1010-- 1
+-0101- 1
+-010-1 1
+.names init reset th1 th0 LatchOut_v5 LatchOut_v6 start
+0---1- 1
+0----1 1
+1010-- 1
+-0101- 1
+-010-1 1
+.names init reset th1 th0 LatchOut_v5 LatchOut_v6 st1
+0---1- 1
+0----1 1
+1010-- 1
+-0101- 1
+-010-1 1
+.names init reset th1 th0 LatchOut_v5 LatchOut_v6 st0
+0---1- 1
+0----1 1
+1010-- 1
+-0101- 1
+-010-1 1
+.names init reset th1 th0 LatchOut_v5 LatchOut_v6 vlv1
+0---1- 1
+0----1 1
+1010-- 1
+-0101- 1
+-010-1 1
+.names init reset th1 th0 LatchOut_v5 LatchOut_v6 vlv0
+0---1- 1
+0----1 1
+1010-- 1
+-0101- 1
+-010-1 1
+.end

@@ -1,0 +1,31 @@
+.model DATAPATH
+.inputs ph7 ph6 ph5 ph4 ph3 ph2 ph1 ph0 start
+.outputs to th1 th0 nck7 nck6 nck5 nck4 nck3 nck2 nck1 nck0
+
+# Costanti
+.names ZERO
+0
+.names UNO
+1
+
+# Sommatore
+.subckt REGISTRO_8_BIT i7=sum7 i6=sum6 i5=sum5 i4=sum4 i3=sum3 i2=sum2 i1=sum1 i0=sum0 o7=reg7 o6=reg6 o5=reg5 o4=reg4 o3=reg3 o2=reg2 o1=reg1 o0=reg0 
+
+.subckt MUX_8_BIT a7=ZERO a6=ZERO a5=ZERO a4=ZERO a3=ZERO a2=ZERO a1=ZERO a0=ZERO b7=reg7 b6=reg6 b5=reg5 b4=reg4 b3=reg3 b2=reg2 b1=reg1 b0=reg0 s=start o7=nck7 o6=nck6 o5=nck5 o4=nck4 o3=nck3 o2=nck2 o1=nck1 o0=nck0 
+
+.subckt SOMMATORE_8_BIT i7=nck7 i6=nck6 i5=nck5 i4=nck4 i3=nck3 i2=nck2 i1=nck1 i0=nck0 k7=ZERO k6=ZERO k5=ZERO k4=ZERO k3=ZERO k2=ZERO k1=ZERO k0=UNO cin=ZERO o7=sum7 o6=sum6 o5=sum5 o4=sum4 o3=sum3 o2=sum2 o1=sum1 o0=sum0
+
+.subckt MAGGIORE_8_BIT i7=sum7 i6=sum6 i5=sum5 i4=sum4 i3=sum3 i2=sum2 i1=sum1 i0=sum0 k7=ZERO k6=ZERO k5=ZERO k4=ZERO k3=ZERO k2=UNO k1=ZERO k0=UNO o0=to
+
+
+# Calcolo ph
+.subckt MAGGIORE_8_BIT i7=ph7 i6=ph6 i5=ph5 i4=ph4 i3=ph3 i2=ph2 i1=ph1 i0=ph0 k7=ZERO k6=UNO k5=ZERO k4=UNO k3=ZERO k2=ZERO k1=ZERO k0=ZERO o0=th1 
+
+.subckt MAGGIORE_8_BIT i7=ph7 i6=ph6 i5=ph5 i4=ph4 i3=ph3 i2=ph2 i1=ph1 i0=ph0 k7=ZERO k6=ZERO k5=UNO k4=UNO k3=UNO k2=ZERO k1=UNO k0=UNO o0=th0
+
+.search registro_8bit.blif
+.search multiplexer_8bit.blif
+.search sommatore_8bit.blif
+.search maggiore_8bit.blif
+
+.end

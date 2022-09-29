@@ -1,0 +1,12 @@
+.model FSMD
+.inputs init reset ph7 ph6 ph5 ph4 ph3 ph2 ph1 ph0
+.outputs st1 st0 nck7 nck6 nck5 nck4 nck3 nck2 nck1 nck0 vlv1 vlv0
+
+.subckt DATAPATH start=start ph7=ph7 ph6=ph6 ph5=ph5 ph4=ph4 ph3=ph3 ph2=ph2 ph1=ph1 ph0=ph0 to=to th1=th1 th0=th0 nck7=nck7 nck6=nck6 nck5=nck5 nck4=nck4 nck3=nck3 nck2=nck2 nck1=nck1 nck0=nck0
+
+.subckt CONTROLLORE init=init reset=reset to=to th1=th1 th0=th0 start=start st1=st1 st0=st0 vlv1=vlv1 vlv0=vlv0
+
+.search FSM_ridotta.blif
+.search datapath.blif
+
+.end
